@@ -5,6 +5,10 @@ const Core = {
     return (() => {
       if (config.API) {
         test.describe(`${name}`, async () => {
+        config.beforeAll && test.beforeAll(config.beforeAll);
+        config.afterAll && test.afterAll(config.afterAll);
+        config.beforeEach && test.beforeEach(config.beforeEach);
+        config.afterEach && test.afterEach(config.afterEach);
           await Promise.all(
             Object.keys(config.API).map((t) => {
               let testContent = config.API[t];
