@@ -1,8 +1,7 @@
 import axios from "axios";
 import {
-  EventsApiFactory,
+  StepssApiFactory,
   IdentityApiFactory,
-  InvitationsApiFactory,
   UsersApiFactory,
 } from "./swagger/api";
 const fs = require("fs");
@@ -23,9 +22,8 @@ axios.interceptors.request.use(
   }
 );
 const aggregatorApi = {
-  Steps: EventsApiFactory(undefined, url, axios),
+  Steps: StepssApiFactory(undefined, url, axios),
   Identity: IdentityApiFactory(undefined, url, axios),
-  Invitations: InvitationsApiFactory(undefined, url, axios),
   Users: UsersApiFactory(undefined, url, axios),
 };
 
