@@ -1,0 +1,6 @@
+{
+  "env": {
+    "url": "https://gateway-dev.testd.co",
+    "signInUrl": "https://gateway-dev.testd.co/api/v1/ida-auth/signin"
+  }
+}

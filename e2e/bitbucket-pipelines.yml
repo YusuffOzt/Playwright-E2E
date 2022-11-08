@@ -1,0 +1,47 @@
+
+clone:
+  depth: full              
+
+definitions:
+ services:
+    docker:
+      memory: 3000
+      caches:
+            - docker
+ steps:
+    - step: &build-test-sonarcloud
+        name: Analyze on SonarCloud
+        script:
+            - pipe: sonarsource/sonarcloud-scan:1.4.0
+        services:
+            - docker
+pipelines:
+  default:
+    - step:
+        name: Test
+        image: mcr.microsoft.com/playwright:v1.25.0-focal
+        script:
+          - export TZ='Europe/Istanbul'
+          - npm install
+          - npm run pw:dev
+          - ls test-report
+
+        artifacts:
+          - test-report/**
+    - step: *build-test-sonarcloud
+    - step: &deploy
+        name: "Deploy"
+        script:
+          - pipe: atlassian/aws-s3-deploy:1.1.0
+            variables:
+              AWS_ACCESS_KEY_ID: ${AWS_KEY}
+              AWS_SECRET_ACCESS_KEY: ${AWS_SECRET}
+              AWS_DEFAULT_REGION: ${AWS_REGION_STG}
+              S3_BUCKET: "test-report.crowdsol.co/staging"
+              LOCAL_PATH: "test-report"
+
+    
+    
+  
+
+          
