@@ -14,24 +14,24 @@ const config: PlaywrightTestConfig = {
         },
       },
     },
-    // {
-    //   name: "firefox",
-    //   use: {
-    //     ...devices["Desktop Firefox"],
-    //     launchOptions: {
-    //       args: ["--disable-web-security"],
-    //     },
-    //   },
-    // },
-    // {
-    //   name: "webkit",
-    //   use: {
-    //     ...devices["Desktop Safari"],
-    //     launchOptions: {
-    //       args: ["--disable-web-security"],
-    //     },
-    //   },
-    // },
+     {
+      name: "firefox",
+      use: {
+        ...devices["Desktop Firefox"],
+        launchOptions: {
+           args: ["--disable-web-security"],
+        },
+      },
+    },
+    {
+       name: "webkit",
+       use: {
+        ...devices["Desktop Safari"],
+         launchOptions: {
+           args: ["--disable-web-security"],
+        },
+       },
+    },
   ],
 };
 export default config;
