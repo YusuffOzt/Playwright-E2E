@@ -37,7 +37,7 @@ pipelines:
               AWS_ACCESS_KEY_ID: ${AWS_KEY}
               AWS_SECRET_ACCESS_KEY: ${AWS_SECRET}
               AWS_DEFAULT_REGION: ${AWS_REGION_STG}
-              S3_BUCKET: "test-report.crowdsol.co/staging"
+              S3_BUCKET: "test-report.testd.co/staging"
               LOCAL_PATH: "test-report"
 
     
