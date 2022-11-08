@@ -28,7 +28,7 @@ export const Steps = {
           timezoneId: Lookups.States.timezoneId
         };
         Steps.States.createdStep = data;
-        let res = await coreApi.Steps.apiV1CaEventsPost(
+        let res = await coreApi.Steps.apiV1CaStepsPost(
           Steps.States.createdStep
         );
         expect(res.status).toBe(200);
@@ -40,7 +40,7 @@ export const Steps = {
       notes: "checks created step",
       run: async () => {
         await Users.API.GetStepGroups.run();
-        let res = await coreApi.Steps.apiV1CaEventsGet(
+        let res = await coreApi.Steps.apiV1CaStepssGet(
           `eventGroupId==${Users.States.userStepId},(name|description)@=*${Steps.States.createdStep.name}`,
           "-startDate"
         );
@@ -70,7 +70,7 @@ export const Steps = {
           timezoneId: Lookups.States.timezoneId,
         };
         Steps.States.updatedStep = data;
-        let res = await coreApi.Steps.apiV1CaEventsIdPut(
+        let res = await coreApi.Steps.apiV1CaStepsIdPut(
           Steps.States.createdStepId,
           Steps.States.updatedStep
         )
@@ -81,7 +81,7 @@ export const Steps = {
       id: 3,
       notes: "checks updated step",
       run: async () => {
-        let res = await coreApi.Steps.apiV1CaEventsIdGet(
+        let res = await coreApi.Steps.apiV1CaStepsIdGet(
           `${Steps.States.updatedStep.stepId}`
         );
         expect(res.data.id).toBe(Steps.States.updatedStep.stepId);
