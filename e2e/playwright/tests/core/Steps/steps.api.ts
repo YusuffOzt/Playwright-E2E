@@ -35,7 +35,7 @@ export const Steps = {
        Steps.States.createdStepId = res.data;
       },
     },
-    GetEvent: {
+    GetCreatedStep: {
       id: 1,
       notes: "checks created step",
       run: async () => {
@@ -51,7 +51,7 @@ export const Steps = {
         expect(res.status).toBe(200);
       },
     },
-    UpdateEvent: {
+    UpdateStep: {
       id: 2,
       notes: "updates a step",
       run: async () => {
@@ -77,7 +77,7 @@ export const Steps = {
         expect(res.status).toBe(204)
       },
     },
-    GetUpdatedEvent: {
+    GetUpdatedStep: {
       id: 3,
       notes: "checks updated step",
       run: async () => {
