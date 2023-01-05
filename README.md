@@ -66,8 +66,6 @@ For more options take a look at https://playwright.dev/docs/debug
 
 ## 👔 Maybe help you 
 
-```sh
- |- playwright documantation - https://playwright.dev/docs/intro
- |- Faker.js - https://fakerjs.dev/api/
- |- Axios - https://axios-http.com/docs/intro
-```
+ - playwright documantation - https://playwright.dev/docs/intro
+ - Faker.js - https://fakerjs.dev/api/
+ - Axios - https://axios-http.com/docs/intro
