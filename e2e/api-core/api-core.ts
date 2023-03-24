@@ -23,6 +23,24 @@ axios.interceptors.request.use(
   }
 );
 
+axios.interceptors.request.use(
+  async (config) => {
+    if (config.headers) {
+    const {authName} = config.params || {}
+    let accessToken=null
+    const authJson=JSON.Parse(fs.readFileSync(`playwright/asset/${authName}.json`))
+    authJson.origins[0].localStorage.forEach((item:{ name:string; value: string})=>{
+      if(item.name=="token"){
+        accessToken=item.value
+      }
+    })
+      config.headers['Authorization']=`Bearer ${accessToken}`
+      return config;
+    }
+    return config;
+  }
+);
+
 const coreApi = {
   Steps: StepsApiFactory(undefined, url, axios),
   Lookups: LookupsApiFactory(undefined, url, axios),
